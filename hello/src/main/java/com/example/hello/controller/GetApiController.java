@@ -60,7 +60,7 @@ public class GetApiController {
     }
 
     @GetMapping(path = "/query-param3") //미리 객체로 정의해두어 객체로 받아오기 =>현업에서 쓰는방 식
-    public String queryParam3(userRequest userRequest) {
+    public String queryParam3(@RequestParam userRequest userRequest) {
         System.out.println(userRequest.getName());
         System.out.println(userRequest.getEmail());
         System.out.println(userRequest.getAge());
