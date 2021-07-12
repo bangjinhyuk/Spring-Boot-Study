@@ -1,8 +1,12 @@
 package com.example.hello.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class userRequest {
     private String name;
     private String email;
+
+//    @JsonProperty("AAGE") //다른 이름으로 받아올수도 있음
     private int age;
 
     public String getName() {
