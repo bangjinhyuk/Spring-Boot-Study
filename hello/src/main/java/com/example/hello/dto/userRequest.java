@@ -1,7 +1,9 @@
 package com.example.hello.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+@JsonInclude(JsonInclude.Include.NON_NULL) // null은 response 하지 않겠다는 의지
 public class userRequest {
     private String name;
     private String email;
