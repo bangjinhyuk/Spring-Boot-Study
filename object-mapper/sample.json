@@ -1,0 +1,16 @@
+{
+  "name" : "방진혁",
+  "age" : 24,
+  "cars": [
+    {
+      "name": "K5",
+      "car_number" : "1234",
+      "TYPE" : ""
+    },
+    {
+      "name": "Q5",
+      "car_number" : "1234",
+      "TYPE" : ""
+    }
+  ]
+}
