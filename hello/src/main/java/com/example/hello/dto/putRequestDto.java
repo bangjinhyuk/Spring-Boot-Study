@@ -1,8 +1,10 @@
 package com.example.hello.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+@Component //Bean 으로 관리 하라고 넘겨줌
 
 public class putRequestDto {
 

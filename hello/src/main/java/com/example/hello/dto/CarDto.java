@@ -3,7 +3,9 @@ package com.example.hello.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import org.springframework.stereotype.Component;
 
+@Component
 //@JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CarDto {
 
@@ -11,6 +13,11 @@ public class CarDto {
 
     @JsonProperty("car_number")
     private String carNumber;
+
+    public CarDto() {
+        this.name = "0";
+        this.carNumber = "0";
+    }
 
     public String getName() {
         return name;
