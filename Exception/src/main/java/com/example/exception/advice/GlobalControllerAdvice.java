@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+
 @RestControllerAdvice(basePackageClasses = ApiController.class)
 public class GlobalControllerAdvice {
 
@@ -23,5 +25,10 @@ public class GlobalControllerAdvice {
     @ExceptionHandler(value = NullPointerException.class)
     public ResponseEntity NullPointerException(NullPointerException e){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hi");
+    }
+
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public ResponseEntity ConstraintViolationException(ConstraintViolationException e){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ConstraintViolationException");
     }
 }
