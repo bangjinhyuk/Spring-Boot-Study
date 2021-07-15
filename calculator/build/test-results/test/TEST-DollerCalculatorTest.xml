@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DollerCalculatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-15T15:55:43" hostname="BBangi-MacBookAir.local" time="0.2">
+  <properties/>
+  <testcase name="MockTest()" classname="DollerCalculatorTest" time="0.2"/>
+  <system-out><![CDATA[20
+60000
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
