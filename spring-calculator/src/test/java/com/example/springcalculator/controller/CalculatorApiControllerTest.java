@@ -37,6 +37,7 @@ public class CalculatorApiControllerTest {
     public void init(){
         Mockito.when(marketApi.connect()).thenReturn(3000);
     }
+
     @Test
     public void sumTest() throws Exception {
         // api/sum test -get
@@ -54,7 +55,7 @@ public class CalculatorApiControllerTest {
     @Test
     public void minusTest() throws Exception {
 
-        Req req = new Req(10,10);
+        Req req = new Req(11,10);
         String json = new ObjectMapper().writeValueAsString(req);
 
         // api/minus test -post

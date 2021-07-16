@@ -1,16 +1,17 @@
 package com.example.springcalculator.component;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-@Qualifier("d")
+@Primary
+public class KCalculator implements ICalculator {
 
-public class DollarCalculator implements ICalculator {
-
-    private int price = 2;
+    private int price = 1;
     private final MarketApi marketApi;
 
     @Override

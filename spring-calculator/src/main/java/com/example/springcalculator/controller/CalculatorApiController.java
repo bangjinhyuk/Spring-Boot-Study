@@ -1,10 +1,12 @@
 package com.example.springcalculator.controller;
 
 import com.example.springcalculator.component.Calculator;
+import com.example.springcalculator.component.DollarCalculator;
 import com.example.springcalculator.dto.Req;
 import com.example.springcalculator.dto.Res;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
