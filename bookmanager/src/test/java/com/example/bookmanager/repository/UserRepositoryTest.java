@@ -92,6 +92,7 @@ class UserRepositoryTest {
 
         Example<User> example = Example.of(new User("ma","new"),matcher); //matcher 빼면 해당 객체와 같은 값을 불러오게 댐
         userRepository.findAll(example).forEach(System.out::println);
+
         
 
 
@@ -101,5 +102,16 @@ class UserRepositoryTest {
 //        Example<User> example = Example.of(user, matcher);
 //
 //        userRepository.findAll(example).forEach(System.out::println);
+    }
+
+    @Test
+    void crud2(){
+        userRepository.save(new User("david", "david@email")); //요때는 save가 insert id == null
+        userRepository.findAll().forEach(System.out::println);
+
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setEmail("updated@email");
+        userRepository.save(user); //요때는 save가 update id != null
+        userRepository.findAll().forEach(System.out::println);
     }
 }
