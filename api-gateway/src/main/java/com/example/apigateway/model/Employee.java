@@ -1,6 +1,6 @@
 package com.example.apigateway.model;
 
-import io.lettuce.core.dynamic.annotation.CommandNaming;
+//import io.lettuce.core.dynamic.annotation.CommandNaming;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
