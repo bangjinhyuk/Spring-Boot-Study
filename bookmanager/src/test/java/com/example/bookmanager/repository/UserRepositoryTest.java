@@ -114,4 +114,30 @@ class UserRepositoryTest {
         userRepository.save(user); //요때는 save가 update id != null
         userRepository.findAll().forEach(System.out::println);
     }
+
+    @Test
+    void select(){
+        System.out.println(userRepository.findUsersByName("leo"));
+        userRepository.findUsersByName("martin").stream().forEach(System.out::println);
+
+        //모두 동일 쿼리
+        System.out.println("--------------------findByEmail-------------------------");
+        System.out.println(userRepository.findByEmail("leo@slowcampus.com"));
+        System.out.println("-------------------getByEmail--------------------------");
+        System.out.println(userRepository.getByEmail("leo@slowcampus.com"));
+        System.out.println("-------------------readByEmail--------------------------");
+        System.out.println(userRepository.readByEmail("leo@slowcampus.com"));
+        System.out.println("--------------------queryByEmail-------------------------");
+        System.out.println(userRepository.queryByEmail("leo@slowcampus.com"));
+        System.out.println("--------------------searchByEmail-------------------------");
+        System.out.println(userRepository.searchByEmail("leo@slowcampus.com"));
+        System.out.println("--------------------streamByEmail-------------------------");
+        System.out.println(userRepository.streamByEmail("leo@slowcampus.com"));
+        System.out.println("---------------------findUserByEmail------------------------");
+        System.out.println(userRepository.findUserByEmail("leo@slowcampus.com"));
+
+
+
+
+    }
 }
