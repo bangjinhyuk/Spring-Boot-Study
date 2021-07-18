@@ -183,4 +183,42 @@ class UserRepositoryTest {
         userRepository.findAll().forEach(System.out::println);
         System.out.println(userRepository.findRowRecord().get("gender"));
     }
+    @Test
+    void listenerTest(){
+        User user = new User();
+        user.setEmail("bang@email");
+        user.setName("bang");
+        userRepository.save(user);
+        //insert
+        User user1 = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        //select
+        user1.setName("maaaaartin");
+
+        userRepository.save(user1);
+        //select-> update
+        userRepository.deleteById(2L);
+        //select -> delete
+        userRepository.findAll().forEach(System.out::println);
+        //select
+    }
+
+    @Test
+    void prePersistTest(){
+        User user = new User();
+        user.setEmail("bang@email");
+        user.setName("bang");
+        userRepository.save(user);
+        userRepository.findAll().forEach(System.out::println);
+
+
+    }
+    @Test
+    void preUpdateTest(){
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setName("bang");
+        userRepository.save(user);
+        userRepository.findAll().forEach(System.out::println);
+
+
+    }
 }
