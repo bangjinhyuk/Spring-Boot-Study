@@ -161,4 +161,17 @@ class UserRepositoryTest {
 
 
     }
+
+    @Test
+    void sortandpage(){
+        //sort
+        System.out.println("findByNameStartingWith"+userRepository.findByNameOrderByIdDesc("martin")); //asc 정순 desc역순
+        System.out.println("findFirstByNameOrderByIdDescEmailAsc"+userRepository.findFirstByNameOrderByIdDescEmailAsc("martin")); //asc 정순 desc역순
+        System.out.println("findFirstByName&sort"+userRepository.findFirstByName("martin",Sort.by(Sort.Order.desc("id"),Sort.Order.asc("email"))));
+
+        //page
+        System.out.println("findFirstByName&page"+userRepository.findByName("martin",PageRequest.of(1,1,Sort.by(Sort.Order.desc("id")))).getContent());
+
+
+    }
 }

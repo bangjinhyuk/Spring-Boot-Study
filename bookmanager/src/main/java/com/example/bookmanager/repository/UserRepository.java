@@ -1,6 +1,9 @@
 package com.example.bookmanager.repository;
 
 import com.example.bookmanager.domain.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
@@ -67,7 +70,14 @@ public interface UserRepository extends JpaRepository<User,Long> {
     //가독성이 떨어짐
     List<User> findByNameLike(String name);
 
+    //sort
+    List<User> findByNameOrderByIdDesc(String name);
 
+    List<User> findFirstByNameOrderByIdDescEmailAsc(String name); //id 정렬후 같은값 email 소팅
 
+    List<User> findFirstByName(String name, Sort sort );
+
+    //page
+    Page<User> findByName(String name , Pageable pageable);
 
 }
