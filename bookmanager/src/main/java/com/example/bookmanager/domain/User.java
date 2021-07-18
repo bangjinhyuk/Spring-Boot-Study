@@ -3,21 +3,24 @@ package com.example.bookmanager.domain;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import com.example.bookmanager.domain.listener.Auditable;
+import com.example.bookmanager.domain.listener.UserEntityListener;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Builder
 @Entity
 @Table
-public class User implements Auditable{
+@EntityListeners(value =  UserEntityListener.class)
+public class User extends BaseEntity implements Auditable {
     @Id //pk
     @GeneratedValue
     private Long id;
@@ -33,9 +36,12 @@ public class User implements Auditable{
 
 //    @Column(name = "crtdat",nullable = false) // 데베에 이름 지정
 //    @Column(insertable = false)
-    private LocalDateTime createdAt;
-//    @Column(insertable = false,updatable = false)// insert, update 적용 여부 지정 가능
-    private LocalDateTime updatedAt;
+
+//    @CreatedDate
+//    private LocalDateTime createdAt;
+////    @Column(insertable = false,updatable = false)// insert, update 적용 여부 지정 가능
+//    @LastModifiedDate
+//    private LocalDateTime updatedAt;
 
     @Transient // 디비에 반영 안되는값을 만들때 사용하는 것
     private String testData;

@@ -221,4 +221,17 @@ class UserRepositoryTest {
 
 
     }
+
+    @Autowired
+    private UserHistoryRepository userHistoryRepository;
+    @Test
+    void userHistoryRepository() {
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setName("leo");
+        userRepository.save(user);
+        userRepository.findAll().forEach(System.out::println);
+        userHistoryRepository.findAll().forEach(System.out::println);
+    }
+
+
 }

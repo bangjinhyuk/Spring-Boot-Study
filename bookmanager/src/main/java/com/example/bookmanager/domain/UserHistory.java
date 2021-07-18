@@ -9,23 +9,28 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
-@NoArgsConstructor
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 //@EntityListeners(value = AuditingEntityListener.class)
-public class Book extends BaseEntity implements Auditable {
+public class UserHistory extends BaseEntity implements Auditable {
     @Id
     @GeneratedValue
     private Long id;
 
+    private Long userid;
+
     private String name;
 
-    private String author;
+    private String email;
 
     @CreatedDate
     private LocalDateTime createdAt;
@@ -33,15 +38,5 @@ public class Book extends BaseEntity implements Auditable {
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
-    //리스너 등록으로 따로 안 추가해도 댐
-//    @PrePersist
-//    public void prePersist(){
-//        this.createAt = LocalDateTime.now();
-//        this.updateAt = LocalDateTime.now();
-//    }
-//
-//    @PreUpdate
-//    public void preUpdate(){
-//        this.updateAt = LocalDateTime.now();
-//    }
+
 }
