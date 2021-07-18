@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -121,21 +122,41 @@ class UserRepositoryTest {
         userRepository.findUsersByName("martin").stream().forEach(System.out::println);
 
         //모두 동일 쿼리
-        System.out.println("--------------------findByEmail-------------------------");
-        System.out.println(userRepository.findByEmail("leo@slowcampus.com"));
-        System.out.println("-------------------getByEmail--------------------------");
-        System.out.println(userRepository.getByEmail("leo@slowcampus.com"));
-        System.out.println("-------------------readByEmail--------------------------");
-        System.out.println(userRepository.readByEmail("leo@slowcampus.com"));
-        System.out.println("--------------------queryByEmail-------------------------");
-        System.out.println(userRepository.queryByEmail("leo@slowcampus.com"));
-        System.out.println("--------------------searchByEmail-------------------------");
-        System.out.println(userRepository.searchByEmail("leo@slowcampus.com"));
-        System.out.println("--------------------streamByEmail-------------------------");
-        System.out.println(userRepository.streamByEmail("leo@slowcampus.com"));
-        System.out.println("---------------------findUserByEmail------------------------");
-        System.out.println(userRepository.findUserByEmail("leo@slowcampus.com"));
+//        System.out.println("findByEmail"+ userRepository.findByEmail("leo@slowcampus.com"));
+//        System.out.println("getByEmail"+ userRepository.getByEmail("leo@slowcampus.com"));
+//        System.out.println("readByEmail"+ userRepository.readByEmail("leo@slowcampus.com"));
+//        System.out.println("queryByEmail"+ userRepository.queryByEmail("leo@slowcampus.com"));
+//        System.out.println("searchByEmail"+ userRepository.searchByEmail("leo@slowcampus.com"));
+//        System.out.println("streamByEmail"+ userRepository.streamByEmail("leo@slowcampus.com"));
+//        System.out.println("findUserByEmail"+userRepository.findUserByEmail("leo@slowcampus.com"));
+//
+        //and 사용
+        System.out.println("findByEmailAndName"+userRepository.findByEmailAndName("leo@slowcampus.com","leo"));
+        //or 사용
+        System.out.println("findByEmailOrName"+userRepository.findByEmailOrName("leo@slowcampus.com","hi"));
 
+
+        System.out.println("findByCreatedAtAfter"+userRepository.findByCreatedAtAfter(LocalDateTime.now().minusDays(1L)));
+
+        System.out.println("findByCreatedAtGreaterThan"+userRepository.findByCreatedAtGreaterThan(LocalDateTime.now().minusDays(1L)));
+
+        System.out.println("findByCreatedAtGreaterThanEqual"+userRepository.findByCreatedAtGreaterThanEqual(LocalDateTime.now().minusDays(1L)));
+
+        //between 사용
+        System.out.println("findByCreatedAtBetween"+userRepository.findByCreatedAtBetween(LocalDateTime.now().minusDays(1L),LocalDateTime.now().plusDays(1L)));
+
+        System.out.println("findByIdBetween"+userRepository.findByIdBetween(2L,4L));
+
+        System.out.println("findByIdIsNotNull"+userRepository.findByIdIsNotNull());
+
+        System.out.println("findByNameIn"+userRepository.findByNameIn(Lists.newArrayList("leo","dennis")));
+
+
+        System.out.println("findByNameStartingWith"+userRepository.findByNameStartingWith("de"));
+        System.out.println("findByNameEndingWith"+userRepository.findByNameEndingWith("is"));
+        System.out.println("findByNameContaining"+userRepository.findByNameContaining("nn"));
+
+        System.out.println("findByNameLike"+userRepository.findByNameLike("%n%"));
 
 
 
