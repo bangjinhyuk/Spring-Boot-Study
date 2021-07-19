@@ -15,9 +15,12 @@ class BookRepositoryTest {
 
     @Test
     void bookTest(){
-        Book book = new Book();
-        book.setName("JPA 초격차 패키지");
-        book.setAuthor("패스트 캠퍼스");
+        Book book = Book.builder()
+                .name("JPA 초격차 패키지")
+                .authorId(1L)
+                .publisherId(1L)
+                .category("Spring Boot")
+                .build();
 
         bookRepository.save(book);
 
