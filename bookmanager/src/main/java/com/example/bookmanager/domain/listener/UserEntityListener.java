@@ -7,19 +7,23 @@ import com.example.bookmanager.support.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
+import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
 public class UserEntityListener {
 
 
-    @PreUpdate
+    @PostPersist
+    @PostUpdate
     public void preUpdate(Object o){
         UserHistoryRepository userHistoryRepository = BeanUtils.getBean(UserHistoryRepository.class);
 
         User user = (User) o;
         UserHistory userHistory = new UserHistory();
-        userHistory.setUserid(user.getId());
+        userHistory.setUser(user);
         userHistory.setEmail(user.getEmail());
         userHistory.setName(user.getName());
 

@@ -62,7 +62,6 @@ class BookReviewInfoRepositoryTest {
         Book book = Book.builder()
                 .name("JPA 초격차 패키지")
                 .authorId(1L)
-                .publisherId(1L)
                 .category("Spring Boot")
                 .build();
 
@@ -81,6 +80,5 @@ class BookReviewInfoRepositoryTest {
         bookReviewInfoRepository.save(bookReviewInfo);
 
         System.out.println(">>>"+ bookReviewInfoRepository.findAll());
-
     }
 }

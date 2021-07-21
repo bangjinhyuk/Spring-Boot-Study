@@ -9,16 +9,16 @@ class UserTest {
 
     @Test
     void test(){
-        User user = new User();
-        user.setEmail("123@123");
-        user.setName("123");
-
-        User user1 = User.builder()
-                .name("123")
-                .email("2323@2323")
-                .build();
-        System.out.println(user);
-        System.out.println(user1);
+//        User user = new User();
+//        user.setEmail("123@123");
+//        user.setName("123");
+//
+//        User user1 = User.builder()
+//                .name("123")
+//                .email("2323@2323")
+//                .build();
+//        System.out.println(user);
+//        System.out.println(user1);
 
     }
 

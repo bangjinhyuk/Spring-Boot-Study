@@ -23,7 +23,8 @@ public class UserHistory extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userid;
+    @ManyToOne
+    private User user;
 
     private String name;
 
