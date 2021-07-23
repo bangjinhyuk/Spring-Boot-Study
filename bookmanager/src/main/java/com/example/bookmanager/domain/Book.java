@@ -26,7 +26,7 @@ public class Book extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long authorId;
+//    private Long authorId;
 
     private String name;
 

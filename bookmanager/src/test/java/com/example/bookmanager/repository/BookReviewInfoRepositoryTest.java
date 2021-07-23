@@ -6,12 +6,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by bangjinhyuk on 2021/07/19.
  */
 @SpringBootTest
+@Transactional
 class BookReviewInfoRepositoryTest {
     @Autowired
     private BookReviewInfoRepository bookReviewInfoRepository;
@@ -21,7 +24,7 @@ class BookReviewInfoRepositoryTest {
     @Test
     void crud(){
         BookReviewInfo bookReviewInfo = BookReviewInfo.builder()
-//                .book()
+                .book(givenBook())
                 .averageReviewScore(4.5f)
                 .reviewCount(2)
                 .build();
@@ -35,25 +38,25 @@ class BookReviewInfoRepositoryTest {
 
     @Test
     void crud2(){
-
-        givenBookReview();
-        Book result = bookReviewInfoRepository.findById(1L)
-                .orElseThrow(RuntimeException::new)
-                .getBook();
-
-        System.out.println(">>>"+ result);
-
-        BookReviewInfo result2 = bookRepository
-                .findById(1L)
-                .orElseThrow(RuntimeException::new)
-                .getBookReviewInfo();
-
-        System.out.println(">>>"+ result2);
-
-        BookReviewInfo result3 = bookRepository
-                .findById(result.getId())
-                .orElseThrow().getBookReviewInfo();
-        System.out.println(">>>"+ result3);
+//
+//        givenBookReview();
+//        Book result = bookReviewInfoRepository.findById(8L)
+//                .orElseThrow(RuntimeException::new)
+//                .getBook();
+//
+//        System.out.println(">>>"+ result);
+//
+//        BookReviewInfo result2 = bookRepository
+//                .findById(1L)
+//                .orElseThrow(RuntimeException::new)
+//                .getBookReviewInfo();
+//
+//        System.out.println(">>>"+ result2);
+//
+//        BookReviewInfo result3 = bookRepository
+//                .findById(result.getId())
+//                .orElseThrow().getBookReviewInfo();
+//        System.out.println(">>>"+ result3);
 
 
     }
@@ -61,7 +64,7 @@ class BookReviewInfoRepositoryTest {
     private Book givenBook(){
         Book book = Book.builder()
                 .name("JPA 초격차 패키지")
-                .authorId(1L)
+//                .authorId(1L)
                 .category("Spring Boot")
                 .build();
 

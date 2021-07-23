@@ -19,6 +19,7 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 
 
 @SpringBootTest
+@Transactional
 class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
@@ -60,9 +61,9 @@ class UserRepositoryTest {
         boolean exists = userRepository.existsById(1L);
         System.out.println(">>>exists>>>" +exists);
 
-        //delete
-        userRepository.delete(userRepository.findById(1L).orElseThrow(null));
-        userRepository.findAll().forEach(System.out::println);
+//        //delete
+//        userRepository.delete(userRepository.findById(1L).orElseThrow(null));
+//        userRepository.findAll().forEach(System.out::println);
 
         //deletebyid
         userRepository.deleteById(2L);

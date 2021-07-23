@@ -32,7 +32,7 @@ class BookRepositoryTest {
     void bookTest(){
         Book book = Book.builder()
                 .name("JPA 초격차 패키지")
-                .authorId(1L)
+//                .authorId(1L)
                 .category("Spring Boot")
                 .build();
 
