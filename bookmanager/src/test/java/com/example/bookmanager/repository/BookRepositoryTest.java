@@ -52,6 +52,11 @@ class BookRepositoryTest {
         System.out.println("Book : " + user.getReviews().get(0).getBook());
         System.out.println("Publisher" + user.getReviews().get(0).getBook().getPublisher());
 
+        user.setName("Leos");
+        userRepository.save(user);
+        System.out.println("user : " + reviewRepository.findAll().get(0).getUser());
+
+
     }
 
     private void givenBookAndReview() {

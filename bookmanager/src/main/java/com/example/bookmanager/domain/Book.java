@@ -41,14 +41,16 @@ public class Book extends BaseEntity {
     @ToString.Exclude
     private List<Review> reviews = new ArrayList<>();
 
-    @ManyToMany
+//    @ManyToMany
+    @OneToMany
+    @JoinColumn(name ="book_id")
     @ToString.Exclude
-    private List<Author> authors = new ArrayList<>();
+    private List<BookAndAuthor> bookAndAuthors = new ArrayList<>();
 
 
-    public void addAuthor(Author... author){
-        System.out.println(Arrays.stream(author).findFirst().get().getName());
-        Collections.addAll(this.authors,author);
+    public void addBookAndAuthors(BookAndAuthor... bookAndAuthors){
+        System.out.println(Arrays.stream(bookAndAuthors).findFirst());
+        Collections.addAll(this.bookAndAuthors,bookAndAuthors);
 
     }
 
