@@ -19,7 +19,7 @@ public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
 
-    @Transactional
+//    @Transactional
     public void putBookAndAuthor(){
         var book = new Book();
         book.setName("JPA 시작하기");
@@ -30,6 +30,8 @@ public class BookService {
         author.setName("bang");
 
         authorRepository.save(author);
+
+        throw new RuntimeException("오류가나서 디비 커밋 실패");
 
     }
 }
