@@ -10,8 +10,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Map;
@@ -38,19 +40,20 @@ public class JWTExam {
         printToken(okta_token);
 
         Jws<Claims> tokenInfo = Jwts.parser().setSigningKey("bang").parseClaimsJws(okta_token);
-        System.out.println(tokenInfo);
+        System.out.println(tokenInfo.getBody().getSubject());
 
     }
 
     @Test
     void Test2(){
-        String oauth0_token = JWT.create().withClaim("name","bang").withClaim("price",3000)
+        String oauth0_token = JWT.create().withSubject("subject").withClaim("name","bang").withClaim("price",3000)
                 .sign(Algorithm.HMAC256("bang"));
         System.out.println(oauth0_token);
         printToken(oauth0_token);
 
         DecodedJWT verified = JWT.require(Algorithm.HMAC256("bang")).build().verify(oauth0_token);
-        System.out.println(verified);
+        System.out.println(verified.getClaims());
+
 
     }
 
@@ -59,13 +62,18 @@ public class JWTExam {
     void Test3() throws InterruptedException {
         final Algorithm AL = Algorithm.HMAC256("bang");
         String token = JWT.create().withSubject("a1234")
-                .withNotBefore(new Date(System.currentTimeMillis() + 1000))
+//                .withNotBefore(new Date(System.currentTimeMillis() + 1000))
                 .withExpiresAt(new Date(System.currentTimeMillis() + 3000))
                 .sign(AL);
 
         Thread.sleep(4000);
-        DecodedJWT verify = JWT.require(AL).build().verify(token);
-
-        System.out.println(verify.getClaims());
+        try {
+            DecodedJWT verify = JWT.require(AL).build().verify(token);
+            //try-catch로 유효하지 않아도 토큰 열람 가능 decode(token을 통하여)
+            System.out.println(!verify.getExpiresAt().before(new Date()));
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
+
 }
