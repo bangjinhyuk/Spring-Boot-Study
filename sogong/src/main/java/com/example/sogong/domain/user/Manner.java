@@ -21,14 +21,14 @@ public class Manner extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User mannerUserId;
 
     @NotNull
     private double mannerTemp;
 
     @Builder
-    public Manner(User userId, double mannerTemp) {
-        this.userId = userId;
+    public Manner(User mannerUserId, double mannerTemp) {
+        this.mannerUserId = mannerUserId;
         this.mannerTemp = mannerTemp;
     }
 }

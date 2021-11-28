@@ -21,15 +21,15 @@ public class UserAndRoom extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User userAndRoomUserId;
 
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room roomId;
 
     @Builder
-    public UserAndRoom(User userId, Room roomId) {
-        this.userId = userId;
+    public UserAndRoom(User userAndRoomUserId, Room roomId) {
+        this.userAndRoomUserId = userAndRoomUserId;
         this.roomId = roomId;
     }
 }

@@ -20,14 +20,14 @@ public class Spec extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User specUserId;
 
     @NotBlank
     private String name;
 
     @Builder
-    public Spec(User userId, String name) {
-        this.userId = userId;
+    public Spec(User specUserId, String name) {
+        this.specUserId = specUserId;
         this.name = name;
     }
 }
