@@ -4,7 +4,7 @@ import com.example.sogong.dto.user.request.MannerEvaluate;
 import com.example.sogong.dto.user.request.ModifyProfile;
 import com.example.sogong.dto.user.request.Specdto;
 import com.example.sogong.dto.user.response.UserProfile;
-import com.example.sogong.service.UserService;
+import com.example.sogong.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

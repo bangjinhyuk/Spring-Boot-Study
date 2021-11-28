@@ -1,4 +1,4 @@
-package com.example.sogong.service;
+package com.example.sogong.service.user;
 
 import com.example.sogong.dto.user.request.MannerEvaluate;
 import com.example.sogong.dto.user.request.ModifyProfile;

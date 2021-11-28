@@ -1,4 +1,4 @@
-package com.example.sogong.service;
+package com.example.sogong.service.user;
 
 import com.example.sogong.domain.user.*;
 import com.example.sogong.dto.user.request.MannerEvaluate;
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
         UserProfile userProfile = new UserProfile();
         double mannerSum = 0;
 
-        List<Manner> mannerList = mannerRepository.findMannerById(Long.valueOf(userId));
+        List<Manner> mannerList = mannerRepository.findMannersByMannerUserId(userRepository.findById(Long.valueOf(userId)).get());
 
         for(int i = 0; i<mannerList.size(); i++){
             mannerSum+= mannerList.get(i).getMannerTemp()-2.5;
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
         UserProfile userProfile = new UserProfile();
         double mannerSum = 0;
 
-        List<Manner> mannerList = mannerRepository.findMannerById(modifyProfile.getId());
+        List<Manner> mannerList = mannerRepository.findMannersByMannerUserId(userRepository.findById(modifyProfile.getId()).get());
 
         for(int i = 0; i<mannerList.size(); i++){
             mannerSum+= mannerList.get(i).getMannerTemp()-2.5;

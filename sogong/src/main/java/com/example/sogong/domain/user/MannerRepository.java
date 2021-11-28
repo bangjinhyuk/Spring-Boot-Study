@@ -10,5 +10,5 @@ import java.util.List;
  */
 @Repository
 public interface MannerRepository extends JpaRepository<Manner,Long> {
-    List<Manner> findMannerById(Long id);
+    List<Manner> findMannersByMannerUserId(User mannerUserId);
 }
