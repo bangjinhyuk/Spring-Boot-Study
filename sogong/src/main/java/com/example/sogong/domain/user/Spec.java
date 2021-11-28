@@ -25,9 +25,15 @@ public class Spec extends BaseTimeEntity {
     @NotBlank
     private String name;
 
+    @NotBlank
+    private String value;
+
     @Builder
-    public Spec(User specUserId, String name) {
+    public Spec(User specUserId, String name, String value) {
         this.specUserId = specUserId;
         this.name = name;
+        this.value = value;
     }
+
+
 }
