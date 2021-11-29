@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,14 +31,15 @@ public class Room extends BaseTimeEntity {
     @NotNull
     private int setLimit;
 
-    @NotBlank
+    @NotNull
     private RoomCategory roomCategory;
 
     @NotBlank
     private String code;
 
-    @OneToMany(mappedBy = "roomId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<UserAndRoom> userAndRoomList;
+    @OneToMany(mappedBy = "userRoomroomId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private List<UserAndRoom> userAndRoomList = new ArrayList<>();
 
     @Builder
     public Room(String name, String subject, int setLimit, RoomCategory roomCategory, String code, List<UserAndRoom> userAndRoomList) {
@@ -47,5 +49,11 @@ public class Room extends BaseTimeEntity {
         this.roomCategory = roomCategory;
         this.code = code;
         this.userAndRoomList = userAndRoomList;
+    }
+
+    public void addUserAndRoomList(UserAndRoom userAndRoom) {
+        System.out.println(userAndRoom);
+        System.out.println(userAndRoomList);
+        this.userAndRoomList.add(userAndRoom);
     }
 }

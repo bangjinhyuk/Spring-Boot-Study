@@ -1,5 +1,6 @@
 package com.example.sogong.dto.user.request;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,8 +18,10 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class MannerEvaluate {
     @NotNull
+    @ApiModelProperty(example = "평가 당하는 사람 id")
     private Long id;
 
     @NotNull
+    @ApiModelProperty(example = "0, 0.5, 1 ... 4.5, 5")
     private double mannerTemp;
 }

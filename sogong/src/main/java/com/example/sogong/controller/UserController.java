@@ -39,7 +39,7 @@ public class UserController {
      * 프로필 가져오기
      */
     @GetMapping("/profile")
-    @ApiOperation(value = "프로필 가져오기")
+    @ApiOperation(value = "프로필 가져오기", notes = "유저 프로필 리턴")
     public ResponseEntity<UserProfile> profile(@RequestParam String userId){
         log.info("userId: {}",userId);
         return userService.profile(userId);
@@ -49,7 +49,7 @@ public class UserController {
      * 프로필 수정
      */
     @PutMapping("/profile")
-    @ApiOperation(value = "프로필 수정")
+    @ApiOperation(value = "프로필 수정" , notes = "유저 프로필 리턴")
     public ResponseEntity<UserProfile> profile(@Valid @RequestBody ModifyProfile modifyProfile){
         log.info("modifyProfile: {}",modifyProfile);
         return userService.modifyProfile(modifyProfile);
@@ -58,7 +58,7 @@ public class UserController {
      * 매너 평가
      */
     @PostMapping("/manner")
-    @ApiOperation(value = "매너온도 평가")
+    @ApiOperation(value = "매너온도 평가" , notes = "성공시 success 리턴")
     public ResponseEntity<String> mannerEvaluate(@Valid @RequestBody MannerEvaluate mannerEvaluate){
         log.info("mannerEvaluate: {}",mannerEvaluate);
         return userService.mannerEvaluate(mannerEvaluate);
@@ -67,7 +67,7 @@ public class UserController {
      * 스펙 추가
      */
     @PostMapping("/spec")
-    @ApiOperation(value = "스펙 추가")
+    @ApiOperation(value = "스펙 추가" , notes = "성공시 success 리턴")
     public ResponseEntity<String> addSpec(@Valid @RequestBody Specdto specdto){
         log.info("specdto: {}",specdto);
         return userService.addSpec(specdto);
