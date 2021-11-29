@@ -9,7 +9,6 @@ import com.example.sogong.domain.user.UserRepository;
 import com.example.sogong.dto.room.request.RoomOpen;
 import com.example.sogong.dto.room.response.ParticipantListView;
 import com.example.sogong.dto.room.response.RoomListView;
-import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -2,7 +2,7 @@ package com.example.sogong.dto.user.request;
 
 import com.example.sogong.domain.user.Gender;
 import com.example.sogong.domain.user.MannerTempPrivate;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,25 +20,25 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ModifyProfile {
     @NotNull
-    @ApiModelProperty(example = "userId")
+    @Schema(example = "userId")
     private Long id;
 
     @NotBlank
-    @ApiModelProperty(example = "이름")
+    @Schema(example = "이름")
     private String name;
 
     @NotBlank
-    @ApiModelProperty(example = "학번")
+    @Schema(example = "학번")
     private String studentId;
 
     @NotBlank
-    @ApiModelProperty(example = "학과")
+    @Schema(example = "학과")
     private String major;
 
-    @ApiModelProperty(example = "성별 MALE,FEMALE")
+    @Schema(example = "성별 MALE,FEMALE")
     private Gender gender;
 
     @NotNull
-    @ApiModelProperty(example = "매너 온도 공개 여부 Y,N")
+    @Schema(example = "매너 온도 공개 여부 Y,N")
     private MannerTempPrivate mannerTempPrivate;
 }
