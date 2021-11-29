@@ -11,6 +11,6 @@ import java.util.List;
  */
 @Repository
 public interface SpecRepository extends JpaRepository<Spec,Long> {
-    List<Spec> findSpecById(Long id);
+    List<Spec> findSpecBySpecUserId(User user);
 
 }

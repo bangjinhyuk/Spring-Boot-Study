@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         if(userRepository.findById(Long.valueOf(userId)).isPresent()){
             userProfile.UserToUserProfile(
                     userRepository.findById(Long.valueOf(userId)).get(),
-                    specRepository.findSpecById(Long.valueOf(userId)),
+                    specRepository.findSpecBySpecUserId(userRepository.findById(Long.valueOf(userId)).get()),
                     mannerSum/5,
                     mannerList.size()
                     );
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         if(userRepository.findById(modifyProfile.getId()).isPresent()){
             userProfile.UserToUserProfile(
                     userRepository.findById(modifyProfile.getId()).get(),
-                    specRepository.findSpecById(modifyProfile.getId()),
+                    specRepository.findSpecBySpecUserId(userRepository.findById(modifyProfile.getId()).get()),
                     mannerSum/5,
                     mannerList.size()
             );
