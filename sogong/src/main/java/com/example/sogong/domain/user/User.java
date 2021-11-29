@@ -35,6 +35,8 @@ public class User extends BaseTimeEntity {
 
     private String major;
 
+    private Gender gender;
+
     @NotNull
     private MannerTempPrivate mannerTempPrivate;
 
@@ -46,16 +48,17 @@ public class User extends BaseTimeEntity {
     @ToString.Exclude
     private List<Manner> mannerList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "userAndRoomUserId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userRoomUserId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude
-    private List<UserAndRoom> userAndRoomList = new ArrayList<>();;
+    private List<UserAndRoom> userAndRoomList = new ArrayList<>();
 
     @Builder
-    public User(String loginId, String password, String name, String studentId, String major, MannerTempPrivate mannerTempPrivate, List<Spec> specList, List<Manner> mannerList, List<UserAndRoom> userAndRoomList) {
+    public User(String loginId, String password, String name, String studentId, String major, Gender gender, MannerTempPrivate mannerTempPrivate, List<Spec> specList, List<Manner> mannerList, List<UserAndRoom> userAndRoomList) {
         this.loginId = loginId;
         this.password = password;
         this.name = name;
         this.studentId = studentId;
+        this.gender = gender;
         this.major = major;
         this.mannerTempPrivate = mannerTempPrivate;
         this.specList = specList;
@@ -67,6 +70,12 @@ public class User extends BaseTimeEntity {
         this.name = modifyProfile.getName();
         this.major = modifyProfile.getMajor();
         this.studentId = modifyProfile.getStudentId();
+        this.gender = modifyProfile.getGender();
+        this.mannerTempPrivate = modifyProfile.getMannerTempPrivate();
+    }
+
+    public void addUserAndRoomList(UserAndRoom userAndRoomList) {
+        this.userAndRoomList.add(userAndRoomList);
     }
 
 }

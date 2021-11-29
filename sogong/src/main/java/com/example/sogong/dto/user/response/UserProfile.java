@@ -1,5 +1,6 @@
 package com.example.sogong.dto.user.response;
 
+import com.example.sogong.domain.user.Gender;
 import com.example.sogong.domain.user.MannerTempPrivate;
 import com.example.sogong.domain.user.Spec;
 import com.example.sogong.domain.user.User;
@@ -30,6 +31,8 @@ public class UserProfile {
 
     private MannerTempPrivate mannerTempPrivate;
 
+    private Gender gender;
+
     private double mannerTemp;
 
     private int mannerCount;
@@ -56,6 +59,7 @@ public class UserProfile {
         this.name = user.getName();
         this.studentId = user.getStudentId();
         this.major = user.getMajor();
+        this.gender = user.getGender();
         this.mannerTempPrivate = user.getMannerTempPrivate();
         specs.forEach(
                 (spec -> this.responseSpecs.add(
