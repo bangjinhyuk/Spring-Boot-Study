@@ -15,6 +15,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class RoomListView {
 
+    private Long id;
+
     private String name;
 
     private String subject;

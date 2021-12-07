@@ -61,6 +61,7 @@ public class RoomServiceImpl implements RoomService{
 
         rooms.forEach(room -> roomListViews.add(
                 new RoomListView(
+                        room.getId(),
                         room.getName(),
                         room.getSubject(),
                         room.getUserAndRoomList().size(),
@@ -102,6 +103,7 @@ public class RoomServiceImpl implements RoomService{
             ){
                 roomListViews.add(
                         new RoomListView(
+                                room.getId(),
                                 room.getName(),
                                 room.getSubject(),
                                 room.getUserAndRoomList().size(),
@@ -138,6 +140,7 @@ public class RoomServiceImpl implements RoomService{
                     ){
                         roomListViews.add(
                                 new RoomListView(
+                                        room.getId(),
                                         room.getName(),
                                         room.getSubject(),
                                         room.getUserAndRoomList().size(),
